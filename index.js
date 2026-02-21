@@ -23,10 +23,17 @@ connectDB();
 const app = express();
 
 /* ================= MIDDLEWARE ================= */
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: true, // 🔥 REQUIRED
+//   })
+// );
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    credentials: true, // 🔥 REQUIRED
+    origin: "https://your-site-name.netlify.app", // 👈 VERCEL LINK HERE
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 app.use(express.json());
