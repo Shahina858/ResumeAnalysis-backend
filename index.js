@@ -31,7 +31,7 @@ const app = express();
 // );
 app.use(
   cors({
-    origin: "https://your-site-name.netlify.app", // 👈 VERCEL LINK HERE
+    origin: "https://magical-melba-48b87a.netlify.app", // 👈 VERCEL LINK HERE
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
