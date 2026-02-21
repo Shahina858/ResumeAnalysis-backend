@@ -23,19 +23,14 @@ connectDB();
 const app = express();
 
 /* ================= MIDDLEWARE ================= */
-// app.use(
-//   cors({
-//     origin: "http://localhost:5173",
-//     credentials: true, // 🔥 REQUIRED
-//   })
-// );
 app.use(
   cors({
-    origin: "https://magical-melba-48b87a.netlify.app", // 👈 VERCEL LINK HERE
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
@@ -52,7 +47,7 @@ app.get("/api/health", (req, res) =>
 const server = http.createServer(app);
 const io = initSocket(server);
 
-/* 🔥 MAKE SOCKET AVAILABLE EVERYWHERE */
+/* MAKE SOCKET AVAILABLE */
 app.use((req, res, next) => {
   req.io = io;
   next();
@@ -75,5 +70,5 @@ app.use(errorHandler);
 /* ================= START ================= */
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
-  console.log(`🚀 Server + Socket.IO running on http://localhost:${PORT}`);
+  console.log(`🚀 Server + Socket.IO running on port ${PORT}`);
 });

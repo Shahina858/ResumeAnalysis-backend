@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 export const initSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "https://magical-melba-48b87a.netlify.app",
+    origin: process.env.FRONTEND_URL,
       methods: ["GET", "POST"],
       credentials: true,
     },
