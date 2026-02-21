@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 export const initSocket = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: "https://magical-melba-48b87a.netlify.app",
       methods: ["GET", "POST"],
       credentials: true,
     },
